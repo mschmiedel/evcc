@@ -28,6 +28,14 @@ This file holds the rules the term list cannot express: tone and spelling. Words
 - Anrede: "du", kleingeschrieben.
 - Komposita mit Bindestrich nach Duden.
 
+## Español
+
+- Forma de tratamiento: "tú".
+- Español de España por ahora. Una variante latinoamericana (es-419) llegará más tarde, por eso se anotan los términos que difieren (contador/medidor, vertido/inyección, previsión/pronóstico).
+- Sentence case en títulos y botones, nunca Title Case.
+- "solo" sin tilde. Números con cifras ("7 días"), no con letras.
+- Los términos se guardan en la forma del inicio de frase. En medio de una frase van en minúscula y con artículo cuando hace falta.
+
 ## Adding a language section
 
 Add a section when a language needs rules beyond the term mapping, typically the form of address (formal or informal), compound spelling, or terms that stay untranslated.
