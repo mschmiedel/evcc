@@ -96,6 +96,15 @@ func (lp *Loadpoint) getPlanRequiredDuration(goal, maxPower float64) time.Durati
 		if lp.socEstimator == nil {
 			return soc.RemainingChargeDuration(goal, maxPower, lp.vehicleSoc, lp.GetVehicle().Capacity())
 		}
+
+		// without a valid soc this session the estimate stays at 0%, account for charged energy
+		// so a stale soc can't keep the plan charging beyond the goal's energy
+		if !lp.socEstimator.Sampled() {
+			capacity := lp.GetVehicle().Capacity()
+			minSoc := lp.getChargedEnergy() / (capacity * 1e3 / soc.ChargeEfficiency) * 100
+			return soc.RemainingChargeDuration(goal, maxPower, minSoc, capacity)
+		}
+
 		return lp.socEstimator.RemainingChargeDuration(goal, maxPower)
 	}
 
